@@ -1,0 +1,12 @@
+cd backend 
+npm run dev
+http://localhost:3000/api/users/general01/records
+
+
+cd frontend
+cd C:\angular-role-spa\frontend
+$env:NODE_OPTIONS="--openssl-legacy-provider"
+npm start
+
+http://localhost:4200/login
+

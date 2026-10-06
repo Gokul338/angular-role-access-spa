@@ -1,0 +1,65 @@
+<div class="app-shell">
+
+  <aside>
+
+    <div class="side-brand">
+      <div class="logo small">A</div>
+      <b>ACCESSHUB</b>
+    </div>
+
+
+    <nav>
+
+      <a
+        routerLink="/dashboard"
+        routerLinkActive="active"
+      >
+        Overview
+      </a>
+
+
+      <a
+        *ngIf="auth.isAdmin()"
+        routerLink="/admin"
+        routerLinkActive="active"
+      >
+        User management
+      </a>
+
+    </nav>
+
+
+    <div class="side-bottom">
+
+      <div class="avatar">
+        {{auth.user?.name?.charAt(0)}}
+      </div>
+
+      <div>
+        <b>
+          {{auth.user?.name}}
+        </b>
+
+        <small>
+          {{auth.user?.role}}
+        </small>
+      </div>
+
+      <button
+        class="icon-btn"
+        (click)="auth.logout()"
+        title="Sign out"
+      >
+        ↪
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+</div>

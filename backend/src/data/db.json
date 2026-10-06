@@ -1,0 +1,78 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userId": "general01",
+      "password": "Pass@123",
+      "name": "Arun Kumar",
+      "email": "arun@example.com",
+      "role": "General User"
+    },
+    {
+      "id": 2,
+      "userId": "general02",
+      "password": "Pass@123",
+      "name": "Priya S",
+      "email": "priya@example.com",
+      "role": "General User"
+    },
+    {
+      "id": 3,
+      "userId": "admin01",
+      "password": "Admin@123",
+      "name": "Gokul Admin",
+      "email": "admin@example.com",
+      "role": "Admin"
+    },
+    {
+      "id": 1791299482565,
+      "userId": "gokul",
+      "password": "Gokul@123",
+      "name": "Gokul",
+      "email": "gokulganesan113@gmail.com",
+      "role": "General User"
+    }
+  ],
+  "records": [
+    {
+      "id": 101,
+      "ownerId": "general01",
+      "title": "Customer Profile",
+      "category": "Profile",
+      "status": "Active",
+      "value": "General access"
+    },
+    {
+      "id": 102,
+      "ownerId": "general01",
+      "title": "Service Request",
+      "category": "Support",
+      "status": "Pending",
+      "value": "SR-1002"
+    },
+    {
+      "id": 103,
+      "ownerId": "general02",
+      "title": "Customer Profile",
+      "category": "Profile",
+      "status": "Active",
+      "value": "General access"
+    },
+    {
+      "id": 104,
+      "ownerId": "general02",
+      "title": "Billing Summary",
+      "category": "Billing",
+      "status": "Review",
+      "value": "₹12,450"
+    },
+    {
+      "id": 105,
+      "ownerId": "admin01",
+      "title": "All User Directory",
+      "category": "Administration",
+      "status": "Active",
+      "value": "3 users"
+    }
+  ]
+}

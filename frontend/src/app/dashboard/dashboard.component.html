@@ -1,0 +1,155 @@
+<section class="page">
+
+  <header class="topbar">
+
+    <div>
+      <div class="eyebrow">
+        OVERVIEW
+      </div>
+
+      <h1>
+        Hello, {{(auth.user?.name || '').split(' ')[0]}} 
+      </h1>
+
+      <p>
+        Here’s what your current access level can see.
+      </p>
+    </div>
+
+    <div class="role-chip">
+      ● {{auth.user?.role}}
+    </div>
+
+  </header>
+
+
+  <div class="profile-grid">
+
+    <div class="stat-card">
+      <span>ACCESS LEVEL</span>
+
+      <strong>
+        {{auth.user?.role}}
+      </strong>
+
+      <small>
+        Permission scope
+      </small>
+    </div>
+
+
+    <div class="stat-card">
+      <span>VISIBLE RECORDS</span>
+
+      <strong>
+        {{loading ? '—' : records.length}}
+      </strong>
+
+      <small>
+        Returned by API
+      </small>
+    </div>
+
+
+    <div class="stat-card">
+      <span>API STATUS</span>
+
+      <strong class="success">
+        ● Online
+      </strong>
+
+      <small>
+        Async response enabled
+      </small>
+    </div>
+
+  </div>
+
+
+  <div class="section-head">
+
+    <div>
+      <h2>Your records</h2>
+
+      <p>
+        Data is loaded asynchronously from the Node.js API.
+      </p>
+    </div>
+
+    <span
+      class="loading"
+      *ngIf="loading"
+    >
+      Loading records…
+    </span>
+
+  </div>
+
+
+  <div class="table-card">
+
+    <table *ngIf="!loading">
+
+      <thead>
+        <tr>
+          <th>RECORD</th>
+          <th>CATEGORY</th>
+          <th>STATUS</th>
+          <th>VALUE</th>
+        </tr>
+      </thead>
+
+
+      <tbody>
+
+        <tr *ngFor="let r of records">
+
+          <td>
+            <b>
+              {{r.title}}
+            </b>
+
+            <small>
+              #{{r.id}}
+            </small>
+          </td>
+
+          <td>
+            {{r.category}}
+          </td>
+
+          <td>
+            <span class="status">
+              {{r.status}}
+            </span>
+          </td>
+
+          <td>
+            {{r.value}}
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+
+    <div
+      class="empty"
+      *ngIf="!loading && !records.length"
+    >
+      No records available for this user.
+    </div>
+
+
+    <div
+      class="skeleton"
+      *ngIf="loading"
+    >
+      <i *ngFor="let x of [1,2,3,4]"></i>
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,110 @@
+<div class="auth-shell">
+
+  <div class="brand-panel">
+
+    <div class="logo">A</div>
+
+    <span>ACCESSHUB</span>
+
+    <h1>
+      One workspace.<br>
+      <em>Controlled access.</em>
+    </h1>
+
+    <p>
+      A clean role-aware SPA demonstrating authentication,
+      API integration and modular Angular architecture.
+    </p>
+
+    <div class="pill-row">
+      <span>Angular 12+</span>
+      <span>Node.js API</span>
+      <span>Role based</span>
+    </div>
+
+  </div>
+
+
+  <div class="login-panel">
+
+    <div class="login-card">
+
+      <div class="eyebrow">
+        SECURE SIGN IN
+      </div>
+
+      <h2>Welcome back</h2>
+
+      <p class="muted">
+        Use a demo account to explore the workspace.
+      </p>
+
+
+      <form
+        [formGroup]="form"
+        (ngSubmit)="submit()"
+      >
+
+        <label>
+          User ID
+
+          <input
+            formControlName="userId"
+            placeholder="e.g. general01"
+          >
+        </label>
+
+
+        <label>
+          Password
+
+          <input
+            type="password"
+            formControlName="password"
+            placeholder="••••••••"
+          >
+        </label>
+
+
+        <label>
+          Role
+
+          <select formControlName="role">
+            <option>General User</option>
+            <option>Admin</option>
+          </select>
+        </label>
+
+
+        <button [disabled]="loading">
+          {{loading ? 'Authenticating…' : 'Continue'}}
+        </button>
+
+      </form>
+
+
+      <div
+        class="error"
+        *ngIf="error"
+      >
+        {{error}}
+      </div>
+
+
+      <div class="demo">
+        <b>Demo credentials</b>
+
+        <span>
+          General: general01 / Pass@123
+        </span>
+
+        <span>
+          Admin: admin01 / Admin@123
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,141 @@
+<section class="page">
+
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">ADMIN CONSOLE</div>
+
+      <h1>User management</h1>
+
+      <p>
+        Manage identities and role access in the demo data store.
+      </p>
+    </div>
+
+    <button
+      class="primary compact"
+      (click)="show=!show"
+    >
+      {{show ? 'Close' : '＋ Add user'}}
+    </button>
+  </header>
+
+
+  <div
+    class="notice"
+    *ngIf="message"
+  >
+    {{message}}
+  </div>
+
+
+  <div
+    class="form-card"
+    *ngIf="show"
+  >
+    <h3>Create a user</h3>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="add()"
+    >
+      <input
+        formControlName="userId"
+        placeholder="User ID"
+      >
+
+      <input
+        formControlName="name"
+        placeholder="Full name"
+      >
+
+      <input
+        formControlName="email"
+        placeholder="Email"
+      >
+
+      <input
+        formControlName="password"
+        placeholder="Password"
+      >
+
+      <select formControlName="role">
+        <option>General User</option>
+        <option>Admin</option>
+      </select>
+
+      <button
+        class="primary"
+        [disabled]="form.invalid"
+      >
+        Create
+      </button>
+    </form>
+  </div>
+
+
+  <div class="table-card">
+
+    <table>
+      <thead>
+        <tr>
+          <th>USER</th>
+          <th>EMAIL</th>
+          <th>ROLE</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let u of users">
+
+          <td>
+            <div class="user-cell">
+              <span class="avatar light">
+                {{u.name.charAt(0)}}
+              </span>
+
+              <div>
+                <b>{{u.name}}</b>
+                <small>{{u.userId}}</small>
+              </div>
+            </div>
+          </td>
+
+          <td>
+            {{u.email}}
+          </td>
+
+          <td>
+            <span
+              class="role-tag"
+              [class.admin]="u.role==='Admin'"
+            >
+              {{u.role}}
+            </span>
+          </td>
+
+          <td>
+            <button
+              class="delete"
+              *ngIf="u.userId!=='admin01'"
+              (click)="remove(u.id)"
+            >
+              Delete
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+
+    <div
+      class="skeleton"
+      *ngIf="loading"
+    >
+      <i *ngFor="let x of [1,2,3]"></i>
+    </div>
+
+  </div>
+
+</section>

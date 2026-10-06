@@ -1,0 +1,71 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+
+  "projects": {
+    "role-access-spa": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+
+          "options": {
+            "outputPath": "dist/role-access-spa",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+
+            "styles": [
+              "src/styles.css"
+            ],
+
+            "scripts": []
+          },
+
+          "configurations": {
+            "production": {
+              "fileReplacements": [],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          },
+
+          "defaultConfiguration": "production"
+        },
+
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+
+          "configurations": {
+            "production": {
+              "browserTarget": "role-access-spa:build:production"
+            },
+
+            "development": {
+              "browserTarget": "role-access-spa:build"
+            }
+          },
+
+          "defaultConfiguration": "development"
+        }
+      }
+    }
+  },
+
+  "defaultProject": "role-access-spa"
+}
